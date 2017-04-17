@@ -13,16 +13,28 @@ namespace DateRangeSliderDemoPortal.Controllers
     {
         protected ScriptGModel Model;
         [Produces("text/javascript")]
-        public ActionResult Home()
+        public ActionResult HomeIndex()
         {
             Model = new ScriptGModel();
             InitModel();
-            Model.Variables.Add("scriptGLoaded", "true");
+            return View(Model);
+        }
+        public ActionResult HomeContact()
+        {
+            Model = new ScriptGModel();
+            InitModel();
+            return View(Model);
+        }
+        public ActionResult HomeAbout()
+        {
+            Model = new ScriptGModel();
+            InitModel();
             return View(Model);
         }
         private void InitModel()
         {
             Model.Variables.Add("transNotImplemented",Resources.PortalCommon.View_All_FeatureNotImplemented);
+            Model.Variables.Add("scriptGLoaded", "true");
         }
     }
 }

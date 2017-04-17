@@ -1,3 +1,2 @@
 ﻿var DocReady = function () {
-
 }

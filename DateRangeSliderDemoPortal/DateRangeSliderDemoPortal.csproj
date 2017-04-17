@@ -9,15 +9,36 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\js\_decReady.js">
+    <Content Include="wwwroot\css\Views\HomeContact.css" />
+    <Content Include="wwwroot\css\Views\HomeContact.min.css" />
+    <Content Include="wwwroot\css\Views\HomeContect.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\Views\HomeAbout - Copier.min.css">
+      <DependentUpon>HomeAbout - Copier.css</DependentUpon>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\Views\HomeAbout.css" />
+    <Content Include="wwwroot\css\Views\HomeAbout.min.css" />
+    <Content Include="wwwroot\css\Views\HomeContect.min.css" />
+    <Content Include="wwwroot\css\Views\HomeIndex - Copier.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\Views\HomeIndex.css" />
+    <Content Include="wwwroot\css\Views\HomeIndex.min.css" />
+    <Content Include="wwwroot\js\HomeIndex.js" />
+    <Content Include="wwwroot\js\views\Home - Copier.js">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\js\views\Home.js" />
-    <Content Include="wwwroot\js\_gecReady.js" />
+    <Content Include="wwwroot\js\views\HomeContact.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\js\views\HomeAbout.js" />
+    <Content Include="wwwroot\js\views\HomeIndex.js" />
     <Content Include="wwwroot\js\_getReady.js" />
+    <Content Include="wwwroot\js\_getReady.min.js" />
     <Content Include="wwwroot\lib\ljoDateRangeSlider\css\ljoRangeSlider.css" />
-    <Content Include="wwwroot\lib\ljoDateRangeSlider\dependencies\linq-vsdoc.js" />
-    <Content Include="wwwroot\lib\ljoDateRangeSlider\dependencies\linq.min.js" />
     <Content Include="wwwroot\lib\ljoDateRangeSlider\dependencies\moment-with-locales.min.js" />
     <Content Include="wwwroot\lib\ljoDateRangeSlider\dependencies\moment.min.js" />
     <Content Include="wwwroot\lib\ljoDateRangeSlider\ljoRangeSlider.js" />
@@ -48,6 +69,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PortalCommon.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

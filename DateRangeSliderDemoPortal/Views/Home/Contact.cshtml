@@ -1,9 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Contact";
+﻿@section ScriptLibs{
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
-
+@section ScriptsG{
+    <script src="~/js/scriptsg/HomeContact.js"></script>
+}
+@section ViewScripts{
+    <script src="~/js/views/HomeContact.js"></script>
+}
+@section LibCSS{
+    <link href="~/lib/jquery-ui-min/themes/base/jquery-ui.min.css" rel="stylesheet" />
+}
+@section ViewCSS{
+    <link href="~/css/Views/HomeContact.css" rel="stylesheet" />
+}
 <address>
     <strong>Support:</strong> <a href="mailto:support@innovacall.com">support@innovacall.com</a><br />
 </address>

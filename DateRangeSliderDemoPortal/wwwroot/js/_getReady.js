@@ -1,4 +1,5 @@
-﻿var GetReady = function () {
+﻿var waitForScriptGTimer;
+var GetReady = function () {
     /// <summary>
     /// Lancée dès la fin du charement de la page, attend que le fichier de données dynamique soit chargé pour appeller getReady
     /// </summary>

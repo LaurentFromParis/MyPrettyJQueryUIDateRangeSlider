@@ -1,0 +1,20 @@
+﻿@model DateRangeSliderDemoPortal.Models.ViewModels.ClientFilesViewModels.ScriptGModel
+@{
+    this.Layout = string.Empty;
+}
+@foreach (var v in Model.Variables)
+{
+    string stringDel = "'";
+    if (!string.IsNullOrEmpty(Convert.ToString(v.Value)))
+    {
+        if(v.Value.ToString().StartsWith("[") || v.Value.ToString().StartsWith("{"))
+        {
+            stringDel = "";
+        }
+        @Html.Raw("var " + v.Key + " = " + stringDel + v.Value.ToString().Replace("'", "\\'") + stringDel + ";\n")
+    }
+    else
+    {
+        @Html.Raw("var " + v.Key + " = '';\n")
+    }
+}

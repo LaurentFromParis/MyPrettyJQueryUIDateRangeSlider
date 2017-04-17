@@ -1,8 +1,19 @@
-﻿@{
-    ViewData["Title"] = "MyPrettyJQueryUIDateRangeSlider";
+﻿@model DateRangeSliderDemoPortal.Models.ViewModels.LayoutViewModels.HomeLayoutViewModel
+@section ScriptLibs{
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+@section ScriptsG{
+    <script src="~/js/scriptsg/HomeAbout.js"></script>
+}
+@section ViewScripts{
+    <script src="~/js/views/HomeAbout.js"></script>
+}
+@section LibCSS{
+    <link href="~/lib/jquery-ui-min/themes/base/jquery-ui.min.css" rel="stylesheet" />
+}
+@section ViewCSS{
+    <link href="~/css/Views/HomeAbout.css" rel="stylesheet" />
+}
+
 
 <p>MyPrettyJQueryUIDateRangeSlider is a simple JQuery UI Widget Factory powered component.
 V 0.1b : Horizontal proportional slidebar to select a period between two dates.

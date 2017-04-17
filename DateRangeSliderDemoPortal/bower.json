@@ -7,6 +7,7 @@
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.6",
     "jquery-ui-min": "v1.11.4",
-    "moment": "2.18.1"
+    "moment": "2.18.1",
+    "angular": "v1.6.5-build.5353+sha.136a42a"
   }
 }

@@ -3,10 +3,17 @@
     <script src="~/lib/ljoDateRangeSlider/ljoRangeSlider.js"></script>
 }
 @section ScriptsG{
-<script src="~/js/views/Home.js"></script>
+    <script src="~/js/scriptsg/HomeIndex.js"></script>
 }
 @section ViewScripts{
-    <script src="~/js/views/Home.js"></script>
+    <script src="~/js/views/HomeIndex.js"></script>
+}
+@section LibCSS{
+    <link href="~/lib/jquery-ui-min/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/ljoDateRangeSlider/css/ljoRangeSlider.css" rel="stylesheet" />
+}
+@section ViewCSS{
+    <link href="~/css/Views/HomeIndex.css" rel="stylesheet" />
 }
 <div class="row">
     <div class="col-md-6">
@@ -25,19 +32,19 @@
                     <tbody>
                         <tr>
                             <td>bounds start</td>
-                            <td><input id="boundStart" type="date" readonly="readonly" /></td>
+                            <td><input id="boundsStart" type="text" readonly="readonly" /></td>
                         </tr>
                         <tr>
                             <td>bounds end</td>
-                            <td><input id="boundEnd" type="date" readonly="readonly" /></td>
+                            <td><input id="boundsEnd" type="text" readonly="readonly" /></td>
                         </tr>
                         <tr>
                             <td>value start</td>
-                            <td><input id="valueStart" type="date" readonly="readonly" /></td>
+                            <td><input id="valuesStart" type="text" readonly="readonly" /></td>
                         </tr>
                         <tr>
                             <td>value end</td>
-                            <td><input id="valueEnd" type="date" readonly="readonly" /></td>
+                            <td><input id="valuesEnd" type="text" readonly="readonly" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -46,7 +53,7 @@
     </div>
     <div class="col-md-12">
         <h2>MyPrettyDateRangeSlider</h2>
-        <ul class="noBullet">
+        <ul class="row noBullet">
             <li>
                 <div id="dateRangeSlider"></div>
             </li>

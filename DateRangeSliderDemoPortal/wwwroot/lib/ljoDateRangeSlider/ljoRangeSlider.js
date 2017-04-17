@@ -1,4 +1,4 @@
-﻿/// <reference path="./dependencies/moment.js" />
+﻿/// <reference path="./dependencies/moment.min.js" />
 $.widget("ljo.rangeSlider", {
     //need momentjs
     // default options
@@ -47,7 +47,7 @@ $.widget("ljo.rangeSlider", {
         .addClass("ljo-rangeSlider")
         .css("background-color", this.options.layout.backgroundColor)
         .on("mouseup", function (e) {
-            var thisData = $(this).data("ljoRangeSlider");
+            var thisData = $(this).data("ljo-rangeSlider");
             var slider = $(this).find(".ljo-rangeSlider-Slider");
             var sliderLeft = slider.offset().left - slider.parent().offset().left;
             var desiredDate = thisData.options.range.values.min;
@@ -89,7 +89,7 @@ $.widget("ljo.rangeSlider", {
                 axis: "x",
                 containment: "parent",
                 drag: function (e, ui) {
-                    var thisData = $(this).parent().data("ljoRangeSlider");
+                    var thisData = $(this).parent().data("ljo-rangeSlider");
                     var periodMilliseconds = moment(thisData.options.range.bounds.max).diff(moment(thisData.options.range.bounds.min), "milliseconds");
                     var visibleMilliseconds = moment(thisData.options.range.values.max).diff(moment(thisData.options.range.values.min), "milliseconds");
                     var totalDistance = $(this).parent().width() - $(this).width();
@@ -104,7 +104,7 @@ $.widget("ljo.rangeSlider", {
                 },
                 stop: function (e, ui) {
                     console.log("ljo.rangeSlider dragStop");
-                    var thisData = $(this).parent().data("ljoRangeSlider");
+                    var thisData = $(this).parent().data("ljo-rangeSlider");
                     $(this).parent().find("[data-role='valuesmin']").text(moment(thisData.options.range.values.min).format("DD/MM/YYYY"));
                     $(this).parent().find("[data-role='valuesmax']").text(moment(thisData.options.range.values.max).format("DD/MM/YYYY"));
                     thisData._refresh(e);
@@ -210,6 +210,7 @@ $.widget("ljo.rangeSlider", {
     _refresh: function (event) {
         // Trigger a callback/event
         console.log("ljo.rangeSlider _refresh")
+        //ToDo refresh internal controls and resize slider using existing code.
     },
     min: function (v) {
         if (v == undefined) {
