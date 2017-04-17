@@ -64,9 +64,36 @@ namespace DateRangeSliderDemoPortal.Resources {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Feature not implemented.
         /// </summary>
-        public static string ViewAll_FeatureNotImplemented {
+        public static string View_All_FeatureNotImplemented {
             get {
-                return ResourceManager.GetString("ViewAll_FeatureNotImplemented", resourceCulture);
+                return ResourceManager.GetString("View_All_FeatureNotImplemented", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à About.
+        /// </summary>
+        public static string View_Home_About_PageTitle {
+            get {
+                return ResourceManager.GetString("View_Home_About_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Contact.
+        /// </summary>
+        public static string View_Home_Contact_PageTitle {
+            get {
+                return ResourceManager.GetString("View_Home_Contact_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Home.
+        /// </summary>
+        public static string View_Home_Index_PageTitle {
+            get {
+                return ResourceManager.GetString("View_Home_Index_PageTitle", resourceCulture);
             }
         }
     }

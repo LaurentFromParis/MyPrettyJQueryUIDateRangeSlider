@@ -1,8 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model DateRangeSliderDemoPortal.Models.ViewModels.LayoutViewModels.HomeLayoutViewModel
+@section ScriptLibs{
+    <script src="~/lib/ljoDateRangeSlider/ljoRangeSlider.js"></script>
 }
-@section Scripts{
-
+@section ScriptsG{
+<script src="~/js/views/Home.js"></script>
+}
+@section ViewScripts{
+    <script src="~/js/views/Home.js"></script>
 }
 <div class="row">
     <div class="col-md-6">

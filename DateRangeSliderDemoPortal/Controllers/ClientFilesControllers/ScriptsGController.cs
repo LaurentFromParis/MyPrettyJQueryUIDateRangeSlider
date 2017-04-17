@@ -22,7 +22,7 @@ namespace DateRangeSliderDemoPortal.Controllers
         }
         private void InitModel()
         {
-            Model.Variables.Add("transNotImplemented",Resources.PortalCommon.ViewAll_FeatureNotImplemented);
+            Model.Variables.Add("transNotImplemented",Resources.PortalCommon.View_All_FeatureNotImplemented);
         }
     }
 }

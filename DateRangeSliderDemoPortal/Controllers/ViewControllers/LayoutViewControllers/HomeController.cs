@@ -12,21 +12,20 @@ namespace DateRangeSliderDemoPortal.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            StrongViewData._PageTitle = Resources.PortalCommon.View_Home_Index_PageTitle;
+            return View(StrongViewData);
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            StrongViewData._PageTitle = Resources.PortalCommon.View_Home_About_PageTitle;
+            return View(StrongViewData);
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            StrongViewData._PageTitle = Resources.PortalCommon.View_Home_Contact_PageTitle;
+            return View(StrongViewData);
         }
 
         public IActionResult Error()
