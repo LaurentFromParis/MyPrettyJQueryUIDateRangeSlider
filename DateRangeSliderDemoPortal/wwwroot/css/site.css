@@ -35,3 +35,9 @@ textarea {
         display: none;
     }
 }
+
+/*#region custom rules*/
+ul.noBullet{
+    list-style:none;
+}
+/*#endregion*/

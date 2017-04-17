@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DemoPortal", "DemoPortal", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateRangeSliderDemoPortal", "DateRangeSliderDemoPortal\DateRangeSliderDemoPortal.csproj", "{701DA795-639C-466F-9779-67C789366952}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InnovacallCoreFramework", "InnovacallCoreFramework", "{12B66B42-1F5E-465C-A7E0-38789D091D6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovacallCoreFramework", "InnovacallCoreFramework\InnovacallCoreFramework.csproj", "{A3BDCC40-F9DA-4524-A1C2-91D0D270FF51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +21,16 @@ Global
 		{701DA795-639C-466F-9779-67C789366952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{701DA795-639C-466F-9779-67C789366952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{701DA795-639C-466F-9779-67C789366952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3BDCC40-F9DA-4524-A1C2-91D0D270FF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BDCC40-F9DA-4524-A1C2-91D0D270FF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BDCC40-F9DA-4524-A1C2-91D0D270FF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BDCC40-F9DA-4524-A1C2-91D0D270FF51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{701DA795-639C-466F-9779-67C789366952} = {E9B4F99F-F73C-4F5C-BDEF-0159E7B037EA}
+		{A3BDCC40-F9DA-4524-A1C2-91D0D270FF51} = {12B66B42-1F5E-465C-A7E0-38789D091D6C}
 	EndGlobalSection
 EndGlobal

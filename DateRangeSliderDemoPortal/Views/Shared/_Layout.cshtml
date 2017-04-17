@@ -43,13 +43,16 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - DateRangeSliderDemoPortal</p>
+            <p>&copy; 2017 - <a href="http://www.innovacall.com">Innovacall</a></p>
         </footer>
     </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-ui-min/jquery-ui.min.js"></script>
+        <script src="~/lib/moment/moment.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/_docReady.js" asp-append-version="true"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
@@ -67,7 +70,6 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
