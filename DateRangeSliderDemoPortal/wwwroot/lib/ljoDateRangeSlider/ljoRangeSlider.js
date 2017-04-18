@@ -98,17 +98,9 @@ $.widget("ljo.rangeSlider", {
                         desiredDate = thisData.options.range.bounds.max;
                     }
                 }
-                var periodMilliseconds = moment(thisData.options.range.bounds.max).diff(moment(thisData.options.range.bounds.min), "milliseconds");
-                var visibleMilliseconds = moment(thisData.options.range.values.max).diff(moment(thisData.options.range.values.min), "milliseconds");
-                var moveMilliseconds = moment(desiredDate).diff(moment(thisData.options.range.values.min), "milliseconds");
+                var sliderMilliseconds = thisData._getSliderMilliseconds();
                 thisData.options.range.values.min = desiredDate;
-                thisData.options.range.values.max = moment(thisData.options.range.values.min).add(visibleMilliseconds, "milliseconds").toDate();
-                var totalDistance = $(this).width() - slider.width();
-                var pixelMillisecond = totalDistance / periodMilliseconds;
-                var pixelsToAdd = moveMilliseconds * pixelMillisecond;
-                slider.css("left", (sliderLeft + pixelsToAdd) + "px");
-                $(this).find("[data-role='valuesmin']").text(moment(thisData.options.range.values.min).format("DD/MM/YYYY"));
-                $(this).find("[data-role='valuesmax']").text(moment(thisData.options.range.values.max).format("DD/MM/YYYY"));
+                thisData.options.range.values.max = moment(desiredDate).add(sliderMilliseconds, "milliseconds").toDate();
                 console.log("ljo.rangeSlider drag" + moment(thisData.options.range.values.min).format("YYYY-MM-DDThh:mm:ss") + " to " + moment(thisData.options.range.values.max).format("YYYY-MM-DDThh:mm:ss"));
                 thisData._refresh(e);
                 thisData._trigger("change", event, thisData.options.range);
@@ -125,14 +117,14 @@ $.widget("ljo.rangeSlider", {
                 containment: "parent",
                 drag: function (e, ui) {
                     var thisData = $(this).parent().data("ljo-rangeSlider");
-                    var periodMilliseconds = moment(thisData.options.range.bounds.max).diff(moment(thisData.options.range.bounds.min), "milliseconds");
-                    var visibleMilliseconds = moment(thisData.options.range.values.max).diff(moment(thisData.options.range.values.min), "milliseconds");
-                    var totalDistance = $(this).parent().width() - $(this).width();
-                    //totalDistance<=>periodMilliseconds
+                    var periodMilliseconds = thisData._getPeriodMilliseconds();
+                    var sliderMilliseconds = thisData._getSliderMilliseconds();
+                    var slidingDistance = thisData._getSlidingDistance();
+                    //slidingDistance<=>periodMilliseconds
                     //ui.position.left<=>x
-                    var millisecondsToAdd = parseInt(((periodMilliseconds - visibleMilliseconds) * ui.position.left) / totalDistance);
+                    var millisecondsToAdd = parseInt(((periodMilliseconds - sliderMilliseconds) * ui.position.left) / slidingDistance);
                     thisData.options.range.values.min = moment(thisData.options.range.bounds.min).add(millisecondsToAdd, "milliseconds").toDate();
-                    thisData.options.range.values.max = moment(thisData.options.range.values.min).add(visibleMilliseconds, "milliseconds").toDate();
+                    thisData.options.range.values.max = moment(thisData.options.range.values.min).add(sliderMilliseconds, "milliseconds").toDate();
                     $(this).parent().find("[data-role='valuesmin']").text(moment(thisData.options.range.values.min).format("DD/MM/YYYY"));
                     $(this).parent().find("[data-role='valuesmax']").text(moment(thisData.options.range.values.max).format("DD/MM/YYYY"));
                     console.log("ljo.rangeSlider drag" + moment(thisData.options.range.values.min).format("YYYY-MM-DDThh:mm:ss") + " to " + moment(thisData.options.range.values.max).format("YYYY-MM-DDThh:mm:ss"));
@@ -140,8 +132,6 @@ $.widget("ljo.rangeSlider", {
                 stop: function (e, ui) {
                     console.log("ljo.rangeSlider dragStop");
                     var thisData = $(this).parent().data("ljo-rangeSlider");
-                    $(this).parent().find("[data-role='valuesmin']").text(moment(thisData.options.range.values.min).format("DD/MM/YYYY"));
-                    $(this).parent().find("[data-role='valuesmax']").text(moment(thisData.options.range.values.max).format("DD/MM/YYYY"));
                     thisData._refresh(e);
                     thisData._trigger("change", e, thisData.options.range);
                 }
@@ -269,6 +259,18 @@ $.widget("ljo.rangeSlider", {
         // prevent invalid values
         this._super(key, value);
     },
+    _getPeriodMilliseconds : function () {
+        var toReturn = moment(this.options.range.bounds.max).diff(moment(this.options.range.bounds.min), "milliseconds");
+        return toReturn;
+    },
+    _getSliderMilliseconds: function () {
+        var toReturn = moment(this.options.range.values.max).diff(moment(this.options.range.values.min), "milliseconds")
+        return toReturn;
+    },
+    _getSlidingDistance: function () {
+        var toReturn = this.element.width() - this.element.find("ljo-rangeSlider-slider").width();
+        return toReturn;
+    },
     // Called when created, and later when changing options
     _refresh: function (event) {
         // Trigger a callback/event
@@ -282,9 +284,9 @@ $.widget("ljo.rangeSlider", {
         this.element.find("[data-role='valuesmin']").text(moment(valuesMin).format("DD/MM/YYYY"));
         this.element.find("[data-role='valuesmax']").text(moment(valuesMax).format("DD/MM/YYYY"));        var rangeSliderWidth = $(this.element).width();
         var periodDuration = moment(boundsMax).diff(moment(boundsMin), "milliseconds");
-        var sliderDuration = moment(valuesMax).diff(moment(valuesMin), "milliseconds");
+        var sliderMilliseconds = moment(valuesMax).diff(moment(valuesMin), "milliseconds");
         var pixelDuration = rangeSliderWidth / periodDuration;
-        var sliderWidth = sliderDuration * pixelDuration;
+        var sliderWidth = sliderMilliseconds * pixelDuration;
         var slideRangeWidth = rangeSliderWidth - sliderWidth;
         var pixelSlideDuration = slideRangeWidth / periodDuration;
         var slideDuration = moment(valuesMin).diff(moment(boundsMin), "milliseconds");
@@ -293,12 +295,13 @@ $.widget("ljo.rangeSlider", {
             + "\nrangeSliderWidth :" + rangeSliderWidth
             + "\nperiodDuration :" + periodDuration
             + "\npixelDuration :" + pixelDuration
-            + "\nsliderDuration :" + sliderDuration
-            + "\nsliderWidth" + sliderWidth
+            + "\nsliderMilliseconds :" + sliderMilliseconds
+            + "\nsliderWidth :" + sliderWidth
+            + "\nsliderLeft :" + sliderLeft
         );
         this.slider = this.element.find("ljo-rangeSlider-slider");
-        $(this.slider).css("width", sliderWidth + "px");
-        $(this.slider).css("left", sliderLeft + "px");
+        this.element.find(".ljo-rangeSlider-Slider").css("width", sliderWidth + "px");
+        this.element.find(".ljo-rangeSlider-Slider").css("left", sliderLeft + "px");
     }
 });
 $('#widget').on('widgetcreate', function (event, ui) {
