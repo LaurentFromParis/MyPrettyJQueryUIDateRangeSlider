@@ -11,11 +11,19 @@ var rangeSliderChangeHandler = function (e, range) {
     $("#valuesEnd").val(moment(range.values.max).format("DD/MM/YYYY"));
 }
 var boundsStartChangeHandler = function (e) {
-    $("#dateRangeSlider").data("ljo-rangeSlider").boundMin($(this).datepicker('getDate'));
+    $("#dateRangeSlider").data("ljo-rangeSlider").boundsMin($(this).datepicker('getDate'));
 }
 
 var boundsEndChangeHandler = function (e) {
-    $("#dateRangeSlider").data("ljo-rangeSlider").boundMax($(this).datepicker('getDate'));
+    $("#dateRangeSlider").data("ljo-rangeSlider").boundsMax($(this).datepicker('getDate'));
+}
+
+var valuesStartChangeHandler = function (e) {
+    $("#dateRangeSlider").data("ljo-rangeSlider").valuesMin($(this).datepicker('getDate'));
+}
+
+var valuesEndChangeHandler = function (e) {
+    $("#dateRangeSlider").data("ljo-rangeSlider").valuesMax($(this).datepicker('getDate'));
 }
 
 var DocReady = function () {
@@ -33,8 +41,12 @@ var DocReady = function () {
     $("#valuesEnd").val(moment(sliderRangeOptions.values.max).format("DD/MM/YYYY"));
     $("#boundsStart").datepicker(datePickerOptions);
     $("#boundsEnd").datepicker(datePickerOptions);
+    $("#valuesStart").datepicker(datePickerOptions);
+    $("#valuesEnd").datepicker(datePickerOptions);
     $("#boundsStart").on("change", boundsStartChangeHandler);
     $("#boundsEnd").on("change", boundsEndChangeHandler);
+    $("#valuesStart").on("change", valuesStartChangeHandler);
+    $("#valuesEnd").on("change",   valuesEndChangeHandler);
     //#endregion
     //#region sliderRange
     $("#dateRangeSlider").rangeSlider({

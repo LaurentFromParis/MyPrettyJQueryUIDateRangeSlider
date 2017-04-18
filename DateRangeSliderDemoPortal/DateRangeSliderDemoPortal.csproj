@@ -26,11 +26,6 @@
     </Content>
     <Content Include="wwwroot\css\Views\HomeIndex.css" />
     <Content Include="wwwroot\css\Views\HomeIndex.min.css" />
-    <Content Include="wwwroot\js\HomeIndex.js" />
-    <Content Include="wwwroot\js\views\Home - Copier.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\js\views\Home.js" />
     <Content Include="wwwroot\js\views\HomeContact.js">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
