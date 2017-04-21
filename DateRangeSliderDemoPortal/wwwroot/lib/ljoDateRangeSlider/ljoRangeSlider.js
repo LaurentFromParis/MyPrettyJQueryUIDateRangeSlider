@@ -125,10 +125,10 @@ $.widget("ljo.rangeSlider", {
                     thisData._dragging = true;
                     var periodMilliseconds = thisData._getPeriodMilliseconds();
                     var sliderMilliseconds = thisData._getSliderMilliseconds();
-                    var slidingDistance = thisData._getSlidingDistance();
-                    //slidingDistance<=>periodMilliseconds
+                    var slidingMaxDistance = thisData._getslidingMaxDistance();
+                    //slidingMaxDistance<=>periodMilliseconds
                     //ui.position.left<=>x
-                    var millisecondsToAdd = parseInt(((periodMilliseconds - sliderMilliseconds) * ui.position.left) / slidingDistance);
+                    var millisecondsToAdd = parseInt(((periodMilliseconds - sliderMilliseconds) * ui.position.left) / slidingMaxDistance);
                     thisData.options.range.values.min = moment(thisData.options.range.bounds.min).add(millisecondsToAdd, "milliseconds").toDate();
                     thisData.options.range.values.max = moment(thisData.options.range.bounds.min).add(millisecondsToAdd + sliderMilliseconds, "milliseconds").toDate();
                     $(this).parent().find("[data-role='valuesmin']").text(moment(thisData.options.range.values.min).format("DD/MM/YYYY"));
@@ -274,7 +274,7 @@ $.widget("ljo.rangeSlider", {
         var toReturn = moment(this.options.range.values.max).diff(moment(this.options.range.values.min), "milliseconds")
         return toReturn;
     },
-    _getSlidingDistance: function () {
+    _getslidingMaxDistance: function () {
         var toReturn = this.element.width() - this.element.find("ljo-rangeSlider-slider").width();
         return toReturn;
     },
@@ -293,10 +293,10 @@ $.widget("ljo.rangeSlider", {
         var rangeSliderWidth = $(this.element).width();
         var periodMilliseconds = this._getPeriodMilliseconds();
         var sliderMilliseconds = this._getSliderMilliseconds();
-        var slidingDistance = this._getSlidingDistance();
-        var pixelDuration = slidingDistance / periodMilliseconds;
+        var slidingMaxDistance = this._getslidingMaxDistance();
+        var pixelDuration = slidingMaxDistance / periodMilliseconds;
         var sliderWidth = sliderMilliseconds * pixelDuration;
-        var pixelSlidingDuration = slidingDistance / periodMilliseconds;
+        var pixelSlidingDuration = slidingMaxDistance / periodMilliseconds;
         var slideDuration = moment(valuesMin).diff(moment(boundsMin), "milliseconds");
         var sliderLeft = slideDuration * pixelSlidingDuration;
         this.slider = this.element.find("ljo-rangeSlider-slider");
